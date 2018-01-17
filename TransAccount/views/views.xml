@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="transaction_action">
+            <field name="name">Transfer</field>
+            <field name="res_model">transfer.base</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Transaction</p>
+            </field>
+        </record>
+
+            <record id="view_partner_form" model="ir.ui.view">
+                <field name="name">Transfer.form</field>
+                <field name="model">transfer.base</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                <form string="Partners">
+                    <sheet>
+                        <group string="Transaction Account">
+                            <field name="move_id" />
+                            <field name="journal_id" />
+                            <field name="date" />
+                            <field name="ref" />
+                        </group>
+                        <notebook>
+                        <page string="Transactions" name="statement_line_ids">
+                            <field name="line_ids" context="{'date':date}">
+                                <tree editable="bottom" string="Statement lines" decoration-muted="journal_entry_ids">
+                                    <field name="sequence"  widget="handle"/>
+                                    <field name="journal_entry_ids" invisible="1"/>
+                                    <field name="date" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+                                    <field name="name" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+                                    <field name="partner_id" domain="['|',('parent_id','=',False),('is_company','=',True)]"
+                                         context="{'default_supplier': 1}"
+                                         attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+                                    <field name="ref" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }" groups="base.group_no_one"/>
+                                    <field name="amount" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+                                    <field name="journal_currency_id" invisible="1"/>
+                                    <field name="amount_currency" invisible="1" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+                                    <field name="currency_id" options="{'no_create': True}" invisible="1" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"/>
+                                    <field name="bank_account_id" invisible="1" attrs="{'readonly' : [('journal_entry_ids', '!=', [])] }"
+                                        domain="['|', ('partner_id', '=', partner_id), ('partner_id', '=', False)]"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                        <newline/>
+                    </sheet>
+                </form>
+                </field>
+            </record>
+
+    <record id="open_account_journal_dashboard_kanban1232" model="ir.actions.act_window">
+        <field name="name">Account Move</field>
+        <field name="res_model">account.move.line</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field eval="1" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="Journal Items">
+                <field name="date"/>
+                <field name="move_id" required="0"/>
+                <field name="journal_id" options='{"no_open":True}'/>
+                <field name="name"/>
+                <field name="ref"/>
+                <field name="statement_id" invisible="1"/>
+                <field name="partner_id"/>
+                <field name="account_id" options='{"no_open":True}' domain="[('company_id', '=', company_id)]"/>
+                <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
+                <field name="reconciled" invisible="1"/>
+                <field name="full_reconcile_id"/>
+                <field name="debit" sum="Total Debit"/>
+                <field name="credit" sum="Total Credit"/>
+                <field name="amount_currency" readonly="True" groups="base.group_multi_currency"/>
+                <field name="currency_id" readonly="True" invisible="1" />
+                <field name="date_maturity"/>
+                <field name="company_currency_id" invisible="1"/>
+                <field name="company_id" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+        <menuitem id="main_transaction_menu" name="Money Transfer"/>
+        <menuitem id="transaction_menu" name="Money Transfer" parent="main_transaction_menu"/>
+        <menuitem id="courses_menu" name="Transfer" parent="transaction_menu" action="transaction_action"/>
+        <menuitem id="courses_menu2" name="Transfer 2" parent="transaction_menu" action="open_account_journal_dashboard_kanban1232"/>
+
+</data>
+
+</odoo>
