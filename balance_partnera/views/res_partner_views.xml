@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="view_partner_form_inherit_crm_custom_fields" model="ir.ui.view">
+            <field name="name">Balance</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Balance">
+                            <group col="12" string="Main Info">
+                                <group colspan="6">
+                                    <field name="display_name"/>
+                                </group>
+                               <group  colspan="6">
+                                    <field name="property_account_payable_id"/>
+                               </group>
+                                <group  colspan="6">
+                               </group>
+                               <group  colspan="6">
+                                    <field name="property_account_receivable_id"/>
+                               </group>
+                            </group>
+                            <group col="12" string="Finance Info">
+                                <group colspan="6">
+                                    <field name="debit" string="Debit"/> <newline/>
+                                    <field name="credit" string="Credit"/>
+                                </group>
+                                <group colspan="6">
+                                    <field name="journal_item_count" string="journal item count"/>
+                                </group>
+                            </group>
+                            <div>
+                                <label for="invoice_ids" string="Invoice Item" style="font-size:18px;color:#7c7bad"/>
+                                <field name="invoice_ids" options="{'no_quick_create': True, 'no_create_edit' : True , 'no_create': True}"/>
+                                <field name="issued_total"/>
+                            </div>
+                    </page>
+                </notebook>
+            </field>
+       </record>
+   </data>
+</openerp>
