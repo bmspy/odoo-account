@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="exchange_rate_action_2" model="ir.actions.act_window">
+              <field name="name">Rxchange Rate</field>
+              <field name="res_model">exchange.rate</field>
+              <field name="view_type">form</field>
+              <field name="view_mode">tree,form</field>
+              <field name="help" type="html">
+                    <p>
+                      Odoo helps you managing the costs for your different vehicles
+                      Costs are generally created from services and contract and appears here.
+                    </p>
+                    <p>
+                      Thanks to the different filters, Odoo can only print the effective
+                      costs, sort them by type and by vehicle.
+                    </p>
+              </field>
+        </record>
+        <record id="view_exchange_rate_tree_1" model="ir.ui.view">
+            <field name="name">Rxchange Rate Tree</field>
+            <field name="model">exchange.rate</field>
+            <field name="arch" type="xml">
+                <tree string="Invoice Line">
+                    <field name="name"/>
+                    <field name="selling_price"/>
+                    <field name="buy_price"/>
+                    <field name="time"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_exchange_rate_form_1" model="ir.ui.view">
+            <field name="name">Rxchange Rate Form</field>
+            <field name="model">exchange.rate</field>
+            <field name="arch" type="xml">
+                <form string="Exchange Pairs">
+                    <group col="12">
+                        <group colspan="12">
+                            <field name="time"/>
+                            <field name="name"/>
+                        </group>
+                        <group  colspan="6">
+                            <field name="selling_price"/>
+                            <field name="buy_price"/>
+                        </group>
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+
+                </form>
+            </field>
+
+
+        </record>
+
+    <menuitem id="main_exchange_rate_11" name="Exchange Rate" parent="main_exchange_currencies" action="exchange_rate_action_2"  sequence="3"/>
+
+
+</data>
+
+</odoo>
