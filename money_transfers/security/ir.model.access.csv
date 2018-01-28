@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_transfers_user,money_transfers.user,money_transfers.model_money_transfers,group_transfers_user,1,0,0,0
+access_transfers_manger,money_transfers.manger,money_transfers.model_money_transfers,group_transfers_manger,1,1,1,0
+access_transfers_receiver,money_transfers.receier,money_transfers.model_money_transfers,group_transfers_receiver,1,1,1,0
+access_transfers_sender,money_transfers.sender,money_transfers.model_money_transfers,group_transfers_sender,1,1,1,0
+access_transfers_fundmanager,money_transfers.fundmanager,money_transfers.model_money_transfers,group_transfers_fundmanager,1,1,1,0
+
+access_transfers_receiver_receiver,money_transfers.receierreceiver,model_money_transfers_receive,group_transfers_receiver,1,1,1,0
+access_transfers_manger_settings,money_transfers.mangersettings,model_money_transfers_config_settings,group_transfers_manger,1,1,1,0
+access_transfers_sender_settings,money_transfers.sendersettings,model_money_transfers_config_settings,group_transfers_sender,1,1,1,0
+

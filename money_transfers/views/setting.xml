@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_sale_config_settings_form_money_transfers" model="ir.ui.view">
+            <field name="name">money_transfers.config.settings.form</field>
+            <field name="model">money_transfers.config.settings</field>
+            <field name="arch" type="xml">
+                <form class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        <button string="Cancel" type="object" name="cancel" class="oe_link" special="cancel"/>
+                    </header>
+                     <group>
+                     <div class="panel">
+                        <div class="panel-new">
+                        <h2>In Accounts</h2>
+                            <group colspan="3" col="3">
+                                <group>
+                                <field name="in_account_debit"/>
+                                </group>
+                            </group>
+                            <group colspan="3" col="3">
+                                <group>
+                                <field name="in_account_credit"/>
+                                </group>
+                            </group>
+                        </div>
+
+                        <div class="panel-new">
+                        <h2>Out Accounts</h2>
+                            <group colspan="3" col="3">
+                                <group>
+                                <field name="out_account_debit"/>
+                                </group>
+                            </group>
+                            <group colspan="3" col="3">
+                                <group>
+                                <field name="out_account_credit"/>
+                                </group>
+                            </group>
+                            
+                        </div>
+
+                        <div class="panel-new">
+                                <h2>Payment Journal</h2>
+                            <group colspan="3" col="3">
+                                <group>
+                                <field name="journal_id"/>
+                                </group>
+                            </group>
+                        </div>
+                    </div>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="action_mony_configuration" model="ir.actions.act_window">
+            <field name="name">Configure Point of Sale</field>
+            <field name="res_model">money_transfers.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+          <menuitem id="menu_money_transfers_global_settings" name="Settings" 
+            groups="group_transfers_manger" 
+            parent="money_transfers_menu_root" sequence="7" action="action_mony_configuration"/>
+</odoo>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="sequence_money_transfers_ref" model="ir.sequence">
+            <field name="name">money_transfers</field>
+            <field name="code">money_transfers</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+            <field name="number_next">53</field>
+            <field name="number_increment">1</field>
+        </record>
+
+
+        <record id="money_transfers_form_view" model="ir.ui.view">
+            <field name="name">Money Transters Form</field>
+            <field name="model">money_transfers</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="deliever">
+                      <header>
+                        <button string="Set to validate" type="object" name="validate_progressbar" class="oe_highlight" 
+                        attrs="{'invisible': [('state', 'in', ('transferred', 'validate', 'pay'))]}"/>
+
+                        <button string="Pay" type="object" name="pay_progressbar" class="oe_highlight"
+                        attrs="{'invisible': [('state', 'in', ('transferred','draft', 'pay'))]}"
+                         groups="money_transfers.group_transfers_fundmanager"/>
+
+                    <field name="state" widget="statusbar"/>
+                    </header>
+
+
+                    <sheet>
+                            <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <center>
+                                <h1 class="panel-title"> Transaction ID : <field name="name" placeholder="Ref Order" nolabel="1"/></h1>
+                                </center>
+                            </div>
+                            </div>
+
+
+
+
+                            
+                     <group   col="4" colspan="4" >
+                            <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Sender</h2>
+                            </div>
+                            <div class="panel-new">
+                                <group>
+                           <field name="partner_sender" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+                           <field name="sender_adress" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}" />
+                           <field name="sender_phone" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+                           <field name="sender_email" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}" />
+                           <field name="sender_id" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+                           <field name="sender_type" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+
+                        </group>
+                        </div>
+                        </div>
+
+
+
+                       <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Receiver</h2>
+                            </div>
+                            <div class="panel-new">
+                        <group>
+                           <field name="partner_recipient" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+                           <field name="receiver_adress" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+                           <field name="receiver_phone" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+                           <field name="receiver_email" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+                           <field name="receiver_id" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+                           <field name="receiver_type" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+                        </group>
+                        </div>
+                        </div>
+
+
+
+                        </group>
+
+
+
+
+
+      <group   col="4" colspan="4" >
+                            <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Sende Information</h2>
+                            </div>
+                            <div class="panel-new">
+                        <group>
+                           <field name="transfer_type" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+                           <field name="send_currency_id" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+
+                        </group>
+                        </div>
+                        </div>
+
+
+
+                       <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Receive Information</h2>
+                            </div>
+                            <div class="panel-new">
+                        <group>
+                           <field name="receive_currency_id" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+                           <field name="receive_country_id" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+
+
+                        </group>
+                        </div>
+                        </div>
+
+
+
+                        </group>
+
+
+
+
+                            <newline/>
+
+
+                            <newline/>
+
+
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Transter Information</h2>
+                            </div>
+                        <div class="panel-new">
+                        <group  col="4" colspan="4" >
+                            <field name="transfer_amount"  widget='monetary' options="{'currency_field': 'currency_id'}"
+                                attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+                            <field name="commission_type"  options="{'currency_field': 'currency_id'}"    attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+                            
+
+                            <field name="transfer_commission"    attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]
+                                }"/>
+                            <field name="currency_id" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+                            <field name="transfers_reason" attrs="{'readonly': [('state', 'in', ('validate', 'pay','transferred'))]}"/>
+
+                           <!-- <field name="partner_type" /> -->
+                            <field name="partner_id" invisible="1" />
+                            <field name="payment_date" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="journal_id" invisible="1"/>
+
+                        </group>
+                        </div>
+
+
+
+                        </div>
+
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="stransfer_amount"/>
+                                    <field name="stransfer_commission"/>
+                                    <field name="total_amount" class="oe_subtotal_footer_separator"/>
+                                </group>
+
+
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+
+<!--
+
+        <record model="ir.ui.view" id="money_transfers_kanban_view">
+            <field name="name">money_transfers.kanban</field>
+            <field name="model">money_transfers</field>
+            <field name="type">kanban</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                    <t t-name="kanban-box">
+                        <a type="edit" >
+                            <div class="oe_product_vignette">
+                                <div class="oe_product_desc" style="float:left;">
+                                    <ul>
+                                        <li>From : <field name="partner_sender"></field> </li>
+                                        <li>To : <field name="partner_recipient"></field> </li>
+                                    </ul>
+                                </div>
+                                <div class="oe_product_desc" style="float:right;">
+                                    <ul>
+                                        <li>Total Amount</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </a>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+-->
+
+        <record id="money_transfers_tree_view" model="ir.ui.view">
+            <field name="name">Money Transters Tree</field>
+            <field name="model">money_transfers</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="All tree">
+                            <field name="name" />
+                            <field name="partner_sender" />
+                            <field name="partner_recipient"/>
+                            <field name="transfer_amount"/>
+                            <field name="currency_id"/>
+                 </tree>
+            </field>
+        </record>
+ 
+
+        <record id="money_transfers_actions" model="ir.actions.act_window">
+            <field name="name">Money Transters</field>
+            <field name="res_model">money_transfers</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="Money Transfers" id="money_transfers_menu_root"
+      web_icon="money_transfers,static/description/icon.png"/>
+
+ 
+
+    <menuitem name="ALL Transfers" id="money_transfers_menu_1" sequence="1"
+      groups="group_transfers_manger,group_transfers_sender" 
+        parent="money_transfers_menu_root" action="money_transfers_actions"/>
+
+            <report id="report_trans" model="money_transfers"
+                string="Money Copy Transfer"
+                report_type="qweb-html"
+                name="money_transfers.reportcopy"
+                rml="money_transfers/report/transfer_copy_report.xml"
+                file="money_transfers.reportcopy"
+                 />
+
+             <report id="report_payment" model="money_transfers"
+               auto="False"
+               string="Payment Receipt Transfer"
+               report_type="qweb-html"
+               rml="money_transfers/report/reportpaymentreceipt_report.xml"
+                name="money_transfers.reportpaymentreceipt"
+                file="money_transfers.reportpaymentreceipt"
+                attachment_use="False"
+                attachment="(object.state not in ('validate','pay')) and ('INV'+(object.number or '').replace('/','')+'.pdf')" 
+                usage="default"/>
+    </data>
+</odoo>

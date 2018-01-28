@@ -1,0 +1,517 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * money_transfers
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-26 08:44+0000\n"
+"PO-Revision-Date: 2017-05-26 08:44+0000\n"
+"Last-Translator: Yihya Hugirat <hugirat@gmail.com>, 2017\n"
+"Language-Team: Arabic (https://www.transifex.com/odoo/teams/41243/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+
+
+
+#. module: money_transfers
+#: model:ir.ui.menu,name:money_transfers.money_transfers_menu_root
+msgid "Money Transfers"
+msgstr "تحويل الأموال"
+
+#. module: money_transfers
+#: model:ir.ui.menu,name:money_transfers.money_transfers_menu_1
+msgid "ALL Transfers"
+msgstr "جميع المعاملات"
+
+#. module: money_transfers
+#: model:ir.ui.menu,name:money_transfers.menu_money_transfers_global_settings
+msgid "Settings"
+msgstr "إعدادات"
+
+#. module: money_transfers
+#: model:ir.ui.menu,name:money_transfers.money_transfers_menu_2
+msgid "Received Transfers"
+msgstr "التحويلات المستلمة"
+
+#. module: money_transfers
+#: model:ir.ui.menu,name:money_transfers.deliever_menu_2
+msgid "ALL product"
+msgstr "جميع المنتجات"
+
+
+#. module: money_transfers
+#: model:ir.actions.report.xml,name:money_transfers.report_trans
+msgid "Money Copy Transfer"
+msgstr "نسخه عن الحوالة"
+
+#. module: money_transfers
+#: model:ir.actions.report.xml,name:money_transfers.report_payment
+msgid "Payment Receipt Transfer"
+msgstr "ايصال الدفع"
+
+
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_partner_sender
+msgid "Sender"
+msgstr "المرسل"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_sender_name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_sender_id
+msgid "ID Number"
+msgstr "رقم الهوية"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_sender_phone
+msgid "Phone"
+msgstr "الهاتف"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_sender_email
+msgid "Email"
+msgstr "البريد الالكتروني"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_sender_adress
+msgid "Address"
+msgstr "العنوان"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_sender_type
+msgid "Category"
+msgstr "التصنيف"
+
+
+
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_partner_recipient
+msgid "Sender"
+msgstr "المرسل"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_receiver_name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_receiver_id
+msgid "ID Number"
+msgstr "رقم الهوية"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_receiver_phone
+msgid "Phone"
+msgstr "الهاتف"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_receiver_email
+msgid "Email"
+msgstr "البريد الالكتروني"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_receiver_adress
+msgid "Address"
+msgstr "العنوان"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_receiver_type
+msgid "Category"
+msgstr "التصنيف"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_payment_date
+msgid "Payment Date"
+msgstr "تاريخ الدفع"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_account_debit
+msgid "Debit Account"
+msgstr "حساب الخصم"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_account_credit
+msgid "Credit Account"
+msgstr "حساب الائتمان"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_transfer_type
+msgid "Transfer Type"
+msgstr "نوع التحويل"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_commission_type
+msgid "Commission Type"
+msgstr "نوع العمولة"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_currency_id
+msgid "Currency"
+msgstr "العملة"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_send_currency_id
+msgid "Currency"
+msgstr "العملة"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_receive_currency_id
+msgid "Currency"
+msgstr "العملة"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_transfers_reason
+msgid "Reason of transfer"
+msgstr "سبب التحويل"
+
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_transfer_amount
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_transfer_commission
+msgid "Commission"
+msgstr "العمولة"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_receive_country_id
+msgid "Country"
+msgstr "الدولة"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_stransfer_amount
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_stransfer_commission
+msgid "Commission"
+msgstr "العمولة"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_total_amount
+msgid "Total Amount"
+msgstr "المبلغ الإجمالي"
+
+#. module: money_transfers
+#: selection:money_transfers,state:0
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: money_transfers
+#: selection:money_transfers,state:1
+msgid "Validate"
+msgstr "تحقق"
+
+#. module: money_transfers
+#: selection:money_transfers,state:2
+msgid "Paid"
+msgstr "مدفوع"
+
+#. module: money_transfers
+#: selection:money_transfers,state:3
+msgid "Transferred"
+msgstr "تم التحويل"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.money_transfers_form_view
+msgid "Transaction ID :"
+msgstr "رقم المعاملة :"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.money_transfers_form_view
+msgid "Sender"
+msgstr "المرسل"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.money_transfers_form_view
+msgid "Receiver"
+msgstr "المستقبل"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.money_transfers_form_view
+msgid "Sende Information"
+msgstr "معلومات الارسال"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.money_transfers_form_view
+msgid "Receive Information"
+msgstr "معلومات الاستقبال"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.money_transfers_form_view
+msgid "Transter Information"
+msgstr "معلومات التحويل"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:model_money_transfers_receive.money_transfers_form_view_recive
+msgid "Set to validate"
+msgstr "تحقق"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.money_transfers_form_view_recive
+msgid "Set to validate"
+msgstr "تحقق"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_receive_partner_recipient
+msgid "Transfers ID"
+msgstr "رقم المعاملة"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_receive_receive_amount
+msgid "Received Amount"
+msgstr "المبلغ الوارد"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_receive_r_payment_date
+msgid "Payment Date"
+msgstr "تاريخ التحويل"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_receive_r_company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_receive_r_partner_id
+msgid "Customer"
+msgstr "العميل"
+
+#. module: money_transfers
+#: selection:money_transfers.receive,state_fileds:0
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: money_transfers
+#: selection:money_transfers.receive,state_fileds:1
+msgid "Validate"
+msgstr "تحقق"
+
+#. module: money_transfers
+#: selection:money_transfers.receive,state_fileds:2
+msgid "PickUp"
+msgstr "استخراج"
+
+#. module: money_transfers
+#: selection:money_transfers.receive,state_fileds:3
+msgid "pay"
+msgstr "مدفوع"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.money_transfers_form_view_recive
+msgid "Transfer Information"
+msgstr "معلومات الحواله"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.money_transfers_form_view_recive
+msgid "Sender Information"
+msgstr "بيانات المرسل"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.money_transfers_form_view_recive
+msgid "Receiver Information"
+msgstr "بيانات المستقبل"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_config_settings_in_account_debit
+msgid "Debit Account"
+msgstr "حساب الخصم"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_config_settings_in_account_credit
+msgid "Credit Account"
+msgstr "حساب الائتمان"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_config_settings_out_account_debit
+msgid "Debit Account"
+msgstr "حساب الخصم"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_config_settings_out_account_credit
+msgid "Credit Account"
+msgstr "حساب الائتمان"
+
+#. module: money_transfers
+#: model:ir.model.fields,field_description:money_transfers.field_money_transfers_config_settings_journal_id
+msgid "Payment Journal"
+msgstr "طريقة الدفع"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.view_sale_config_settings_form_money_transfers
+msgid "In Accounts"
+msgstr "الحسابات الداخيلة"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.view_sale_config_settings_form_money_transfers
+msgid "Out Accounts"
+msgstr "الحسابات الخارج"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.view_sale_config_settings_form_money_transfers
+msgid "Payment Journal"
+msgstr "طريقة الدفع"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.view_sale_config_settings_form_money_transfers
+msgid "Payment Journal"
+msgstr "طريقة الدفع"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "Transfer ID :"
+msgstr "رقم المعاملة :"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "Outbound Transfer"
+msgstr "حوالة صادرة"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "Payment Date :"
+msgstr "تاريخ التحويل :"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "Transfer Sender :"
+msgstr "مرسل الحوالة :"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "Transfer Receiver :"
+msgstr "مستقبل الحوالة :"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "<strong>Name</strong>"
+msgstr "<strong>الاسم</strong>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "<strong>Phone</strong>"
+msgstr "<strong>الهاتف</strong>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "<strong>Email</strong>"
+msgstr "<strong>البريد الالكتروني</strong>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "<strong>ID</strong>"
+msgstr "<strong>رقم المعاملة</strong>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "<strong>Adress</strong>"
+msgstr "<strong>العنوان</strong>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "<strong>Transfer info</strong>"
+msgstr "<strong>تفاصيل الحوالة</strong>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "<strong>Amount</strong>"
+msgstr "<strong>المبلغ</strong>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "<strong>Currency</strong>"
+msgstr "<strong>العملة</strong>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "<strong>Commission</strong>"
+msgstr "<strong>العمولة</strong>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "<strong>Notes</strong>"
+msgstr "<strong>ملاحظات</strong>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "<b>Signature Employee</b>"
+msgstr "<b>توقيع الموظف</b>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "<b>Signature Customer</b>"
+msgstr "<b>توقيع المستلم</b>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportcopy
+msgid "Create By :"
+msgstr "تم اعداده بواسطة :"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportpaymentreceipt
+msgid "Your Payment Received."
+msgstr "تم استلام الدفعة"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportpaymentreceipt
+msgid "Thanks."
+msgstr "شكراً"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportpaymentreceipt
+msgid "Outbound Transfer"
+msgstr "حوالة صادرة"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportpaymentreceipt
+msgid "Transfer Sender :"
+msgstr "المرسل :"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportpaymentreceipt
+msgid "Transfer ID :"
+msgstr "رقم المعاملة :"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportpaymentreceipt
+msgid "Payment Date :"
+msgstr "تاريخ التحويل :"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportpaymentreceipt
+msgid "<strong>Transfer info</strong>"
+msgstr "<strong>معلومات الحوالة</strong>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportpaymentreceipt
+msgid "<strong>Amount</strong>"
+msgstr "<strong>المبلغ</strong>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportpaymentreceipt
+msgid "<strong>Commission</strong>"
+msgstr "<strong>العمولة</strong>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportpaymentreceipt
+msgid "<strong>Currency</strong>"
+msgstr "<strong>العملة</strong>"
+
+#. module: money_transfers
+#: model:ir.ui.view,arch_db:money_transfers.reportpaymentreceipt
+msgid "Create By :"
+msgstr "تم اعداده بواسطة :"
+

@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+         <!-- QWeb Reports -->
+        <report
+            id="invoice_payment_receipt_report"
+            model="account.invoice"
+            menu="True"
+            report_type="qweb-pdf"
+            string="Payment Receipt Report"
+            name="invoice_payment_receipt.invoice_payment_receipt_report_id"
+            file="invoice_payment_receipt.invoice_payment_receipt_report_id"
+           />
+        
+        <template id="invoice_payment_receipt_report_id">
+                <t t-foreach="docs" t-as="doc">
+
+           <div class="header col-xs-12" t-attf-style="padding-left:0px;padding-right:0px; color:#303030;font-size:18px;font-family:Changa;border-bottom:2px solid #eee">
+           <div style="padding-left:0px; float:left;">
+
+           <span>
+                <span style="float:left;">
+                	<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="height:120px;"/>
+                	</span>
+                <span style="float:left; margin-left:20px;margin-top:0px;padding-top:0; height:120px; padding-left:5; border-left:5px solid 5a5a5a;">
+                    <div style="font-size:80;font-weight:bold;color:898989;margin-top:0px;padding-top:0; height:90px;">Thanks.
+                    </div>
+                    <div style="font-size:20;color:606060;margin-top:0px;padding:0;">Your Payment Received.</div>
+
+                </span>
+            </span>
+
+                         	</div>
+        <div style="padding-left:0px; float:right;">
+                <h4><strong><span style="float:left; color:#303030;" t-esc="doc.partner_id.company_id.name"/></strong></h4>
+        </div>
+        <div class="col-xs-4 mb8 pull-right" style="padding-bottom:2px;padding-right:0px;">
+            <div class="pull-right" style="width:auto;padding:10px; font-size:16px; font-family:Changa; ">
+                <span class="fa fa-map-marker"><span  style="font-family:Changa; margin-left:5px;" t-esc="doc.partner_id.company_id.street"/></span>
+
+                <span class="fa fa-phone" style="margin-top:3px;"><span style="font-family:Changa; margin-left:5px;" t-esc="doc.partner_id.company_id.phone"/></span>
+                <span class="fa fa-globe" style="margin-top:3px;"><span style="font-family:Changa; margin-left:5px;" t-esc="doc.partner_id.company_id.website"/></span>
+                <span class="fa fa-envelope" style="margin-top:3px;"><span style="font-family:Changa; margin-left:5px;" t-esc="doc.partner_id.company_id.email"/></span>
+
+
+            </div>
+                                     	</div>
+
+        </div>
+
+                         <div class="page" style="font-family:Changa;">
+                             <div>
+                                 <div class="row">
+    <div class="pull-left" style="float:left;color:#303030;font-size:14px;font-family:Changa; margin-left:20px;">
+                <h4><strong>Payment Receipt To :</strong></h4>
+			    <h4><strong><span t-esc="doc.partner_id.name"/></strong></h4>
+
+                <h6><span class="fa fa-map-marker"><span style="font-size:14px; margin-left:5px; font-family:Changa;" t-esc="doc.partner_id.street"/></span></h6>
+                <h6><span class="fa fa-phone"><span style="font-size:14px; margin-left:5px; font-family:Changa;" t-esc="doc.partner_id.phone"/></span></h6>
+                <h6><span class="fa fa-envelope"><span style="font-size:14px; margin-left:5px; font-family:Changa;" t-esc="doc.partner_id.email"/></span></h6>
+
+
+    </div>
+
+    <div class="col-xs-6 mt8 mb8 pull-right" t-attf-style="background-color:#cecece; color:#303030;padding:15px; margin-right:20px; font-size:18px; font-family:Changa; ">
+                <div>
+                    <strong style="white-space:nowrap;">Payment Receipt for Invoice : </strong>
+                    <span t-field="doc.number"/>
+                </div>
+
+                <div>
+                                         <t t-foreach="doc.payment_ids" t-as="pay">
+                                         <strong>Payment Date :</strong> <span t-field="pay.payment_date" />
+                                         <br/>
+                                         <strong>Payment Ref. :</strong> <span t-esc="pay.name"/>
+                                         </t>
+                </div>
+
+    </div>
+
+
+
+                                         </div>
+                 
+                                 <table class="table table-responsive">
+                                     <tr style="background-color:#cecece; page-break-inside: avoid; color:#303030;white-space:nowrap;" >
+                                        <td t-if="doc.name">
+                                             <strong>Description</strong>
+                                        </td>
+                                        <td t-if="doc.origin">
+                                             <strong>Your Reference</strong>
+                                        </td>
+                                        <td>
+                                            <strong>Invoice Untaxed Amount</strong>
+                                        </td>
+                                        <td>
+                                            <strong>Invoice Tax Amount</strong>
+                                        </td>
+                                        <td>
+                                            <strong>Invoice Total Amount</strong>
+                                        </td>
+                                        <td>
+                                            <strong>Total Paid Amount</strong>
+                                        </td>
+                                     </tr>
+                                      <tr class="text-center" style="background-color:#f9f9f9; page-break-inside: avoid; color:#303030;white-space:nowrap;">
+                                        <td t-if="doc.name" >
+                                             <span t-field="doc.name"/>
+                                        </td>
+                                        <td t-if="doc.origin">
+                                             <span t-field="doc.origin"/>
+                                        </td>
+                                         <td>
+                                            <span t-field="doc.amount_untaxed"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.amount_tax"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.amount_total"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="doc.amount_total - doc.residual" t-esc-options='{"widget": "monetary", "display_currency": "doc.currency_id"}'/>
+                                        </td>
+                                     </tr>
+                                 </table>
+                                 <h4><div>Payments:</div></h4>
+                                     <table class="table table-responsive">
+                                         <tr style="background-color:#cecece; page-break-inside: avoid; color:#303030;white-space:nowrap;">
+                                            <td><strong><i class="fa fa-list-ol"/> Sr.No.</strong></td>
+                                            <td><strong><i class="fa fa-pencil-square"/> Payment Ref.</strong></td>
+                                            <td><strong><i class="fa fa-calendar"/> Payment Date </strong></td>
+                                            <td><strong><i class="fa fa-credit-card"/> Payment Method </strong></td>
+                                            <td><strong><i class="fa fa-money"/> Paid Amount</strong></td>
+                                            <td><strong><i class="fa fa-pencil-square"/> Memo</strong></td>
+                                         </tr>
+                                         <t t-foreach="doc.payment_ids" t-as="pay">
+                                             <tr style="background-color:#f9f9f9; page-break-inside: avoid; color:#303030;white-space:nowrap;">
+                                                  <td><span t-esc="pay_index+1"/></td>
+                                                  <td><span t-esc="pay.name"/></td>
+                                                  <td><span t-field="pay.payment_date" /></td>
+                                                  <td><span t-esc="pay.journal_id.name"/></td>
+                                                  <td><span t-esc="pay.amount" t-esc-options='{"widget": "monetary", "display_currency": "pay.currency_id"}'/></td>
+                                                  <td><span t-esc="pay.communication"/></td>
+                                             </tr>
+                                         </t>
+                                     </table>
+                             </div>
+                           
+                            <div style=" padding-bottom:20px;">
+                                   <div class="col-xs-8 pull-left">
+                                        <br/><h5> <strong>Authorized By :</strong> <strong><span t-esc="doc.partner_id.company_id.name"/></strong></h5>
+                                   </div>
+                                   <div class="col-xs-4 pull-right">
+                                        <br/><h5> <strong>Customer Copy</strong></h5>
+                                   </div>
+                              </div>
+
+
+
+<!-- End Copy -->
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="row" style="width:100%; border-bottom:2px dotted  #eee; margin-top:10px; margin-bottom:10px;">
+</div>
+<br/>
+
+
+
+           <div class="col-xs-12" t-attf-style="padding-left:0px;padding-top:20px; padding-right:0px; color:#303030;font-size:18px;font-family:Changa;border-bottom:2px solid #eee; ">
+           <div style="padding-left:0px; float:left; ">
+
+           <span>
+                <span style="float:left;">
+                	<img t-if="doc.company_id.logo" t-att-src="'data:image/png;base64,%s' %doc.company_id.logo" style="height:120px;"/>
+                	</span>
+                <span style="float:left; margin-left:20px;margin-top:0px;padding-top:0; height:120px; padding-left:5; border-left:5px solid 5a5a5a;">
+                    <div style="font-size:80;font-weight:bold;color:898989;margin-top:0px;padding-top:0; height:90px;">Thanks.
+                    </div>
+                    <div style="font-size:20;color:606060;margin-top:0px;padding:0;">Your Payment Received.</div>
+
+                </span>
+            </span>
+
+                         	</div>
+        <div style="padding-left:0px; float:right;">
+                <h4><strong><span style="float:left; color:#303030;" t-esc="doc.partner_id.company_id.name"/></strong></h4>
+        </div>
+        <div class="col-xs-4 mb8 pull-right" style="padding-bottom:2px;padding-right:0px;">
+            <div class="pull-right" style="width:auto;padding:10px; font-size:16px; font-family:Changa;">
+                <span class="fa fa-map-marker"><span  style="font-family:Changa; margin-left:5px;" t-esc="doc.partner_id.company_id.street"/></span>
+
+                <span class="fa fa-phone" style="margin-top:3px;"><span style="font-family:Changa; margin-left:5px;" t-esc="doc.partner_id.company_id.phone"/></span>
+                <span class="fa fa-globe" style="margin-top:3px;"><span style="font-family:Changa; margin-left:5px;" t-esc="doc.partner_id.company_id.website"/></span>
+                <span class="fa fa-envelope" style="margin-top:3px;"><span style="font-family:Changa; margin-left:5px;" t-esc="doc.partner_id.company_id.email"/></span>
+
+
+            </div>
+                                     	</div>
+
+        </div>
+                             <div>
+                                 <div class="row">
+    <div class="pull-left" style="float:left;color:#303030;font-size:14px;font-family:Changa; margin-left:20px;">
+                <h4><strong>Payment Receipt To :</strong></h4>
+			    <h4><strong><span t-esc="doc.partner_id.name"/></strong></h4>
+
+                <h6><span class="fa fa-map-marker"><span style="font-size:14px; margin-left:5px; font-family:Changa;" t-esc="doc.partner_id.street"/></span></h6>
+                <h6><span class="fa fa-phone"><span style="font-size:14px; margin-left:5px; font-family:Changa;" t-esc="doc.partner_id.phone"/></span></h6>
+                <h6><span class="fa fa-envelope"><span style="font-size:14px; margin-left:5px; font-family:Changa;" t-esc="doc.partner_id.email"/></span></h6>
+
+
+
+    </div>
+
+    <div class="col-xs-6 mt8 mb8 pull-right" t-attf-style="background-color:#cecece; color:#303030;padding:15px; margin-right:20px; font-size:18px; font-family:Changa; ">
+                <div>
+                    <strong style="white-space:nowrap;">Payment Receipt for Invoice : </strong>
+                    <span t-field="doc.number"/>
+                </div>
+
+                <div>
+                                         <t t-foreach="doc.payment_ids" t-as="pay">
+                                         <strong>Payment Date :</strong> <span t-field="pay.payment_date" />
+                                         <br/>
+                                         <strong>Payment Ref. :</strong> <span t-esc="pay.name"/>
+                                         </t>
+                </div>
+
+    </div>
+
+
+
+                                         </div>
+                 
+                                 <table class="table table-responsive">
+                                     <tr style="background-color:#cecece; page-break-inside: avoid; color:#303030;white-space:nowrap;" >
+                                        <td t-if="doc.name">
+                                             <strong>Description</strong>
+                                        </td>
+                                        <td t-if="doc.origin">
+                                             <strong>Your Reference</strong>
+                                        </td>
+                                        <td>
+                                            <strong>Invoice Untaxed Amount</strong>
+                                        </td>
+                                        <td>
+                                            <strong>Invoice Tax Amount</strong>
+                                        </td>
+                                        <td>
+                                            <strong>Invoice Total Amount</strong>
+                                        </td>
+                                        <td>
+                                            <strong>Total Paid Amount</strong>
+                                        </td>
+                                     </tr>
+                                      <tr class="text-center" style="background-color:#f9f9f9; page-break-inside: avoid; color:#303030;white-space:nowrap;">
+                                        <td t-if="doc.name" >
+                                             <span t-field="doc.name"/>
+                                        </td>
+                                        <td t-if="doc.origin">
+                                             <span t-field="doc.origin"/>
+                                        </td>
+                                         <td>
+                                            <span t-field="doc.amount_untaxed"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.amount_tax"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="doc.amount_total"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="doc.amount_total - doc.residual" t-esc-options='{"widget": "monetary", "display_currency": "doc.currency_id"}'/>
+                                        </td>
+                                     </tr>
+                                 </table>
+                                 <h4><div>Payments:</div></h4>
+                                     <table class="table table-responsive">
+                                         <tr style="background-color:#cecece; page-break-inside: avoid; color:#303030;white-space:nowrap;">
+                                            <td><strong><i class="fa fa-list-ol"/> Sr.No.</strong></td>
+                                            <td><strong><i class="fa fa-pencil-square"/> Payment Ref.</strong></td>
+                                            <td><strong><i class="fa fa-calendar"/> Payment Date </strong></td>
+                                            <td><strong><i class="fa fa-credit-card"/> Payment Method </strong></td>
+                                            <td><strong><i class="fa fa-money"/> Paid Amount</strong></td>
+                                            <td><strong><i class="fa fa-pencil-square"/> Memo</strong></td>
+                                         </tr>
+                                         <t t-foreach="doc.payment_ids" t-as="pay">
+                                             <tr style="background-color:#f9f9f9; page-break-inside: avoid; color:#303030;white-space:nowrap;">
+                                                  <td><span t-esc="pay_index+1"/></td>
+                                                  <td><span t-esc="pay.name"/></td>
+                                                  <td><span t-field="pay.payment_date" /></td>
+                                                  <td><span t-esc="pay.journal_id.name"/></td>
+                                                  <td><span t-esc="pay.amount" t-esc-options='{"widget": "monetary", "display_currency": "pay.currency_id"}'/></td>
+                                                  <td><span t-esc="pay.communication"/></td>
+                                             </tr>
+                                         </t>
+                                     </table>
+                             </div>
+                           
+                            
+                              
+
+                        </div>
+
+                        <div class="footer" style="font-family:Changa;">
+                                   <div class="col-xs-8 pull-left">
+                                        <br/><h5> <strong>Authorized By :</strong> <strong><span t-esc="doc.partner_id.company_id.name"/></strong></h5>
+                                   </div>
+                                   <div class="col-xs-4 pull-right">
+                                        <br/><h5> <strong>Company Copy</strong></h5>
+                                   </div>
+                        </div>
+               </t>
+        </template>
+    </data>
+</openerp>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+
+        <record id="money_transfers_form_view_recive" model="ir.ui.view">
+            <field name="name">Money Received</field>
+            <field name="model">money_transfers.receive</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="deliever">
+
+                    <header>
+                        <button string="Set to validate" type="object" name="started_progress" class="oe_highlight" 
+                    	attrs="{'invisible': [('state_fileds', 'in', ('pickup', 'validate', 'pay'))]}"/>
+
+                        <button string="pick Up" type="object" name="progress_progress" class="oe_highlight"
+                        attrs="{'invisible': [('state_fileds', 'in', ('draft', 'pickup', 'pay'))]}"/>
+
+                        <button string="Pay" type="object" name="pay_progress" class="oe_highlight"
+                        attrs="{'invisible': [('state_fileds', 'in', ('draft', 'validate', 'pay'))]}"/>
+
+                    <field name="state_fileds" widget="statusbar"/>
+                    </header>
+
+                    <sheet>
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Transfer Information</h2>
+                            </div>
+                            
+
+                        <div class="panel-new">
+ 
+                        <group>
+
+                           <field name="partner_recipient" options="{'limit': 1,'no_create': True,'no_idtrans': True,'no_open': True}" 
+                           	attrs="{'readonly': [('state_fileds', 'not in', ('draft'))]}"/>
+						</group>
+
+
+
+
+                        </div>
+
+
+
+                        </div>
+
+
+                        	<!-- Sender info -->
+
+                        <div attrs="{'invisible': [('state_fileds', 'not in', ('pickup', 'pay'))]}">
+                        <div class="panel panel-primary">
+
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Sender Information</h2>
+                            </div>
+
+                        <div class="panel-new">
+                        	
+ 						<group col="4" colspan="4" >
+                           <field name="sender_name" readonly="1"/>
+                           <field name="sender_id" readonly="1"/>
+                           <field name="sender_adress" readonly="1"/>
+                           <field name="sender_phone" readonly="1"/>
+                        </group>
+
+                         </div>
+
+                        </div>
+
+
+                        </div>
+
+                        	<!--End  Sender info -->
+
+
+
+                        	<!-- Receiver info -->
+
+ 					<div attrs="{'invisible': [('state_fileds', 'not in', ('pickup', 'pay'))]}">
+                        <div class="panel panel-primary">
+
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Receiver Information</h2>
+                            </div>
+
+                        <div class="panel-new">
+                        	
+                        <group  col="4" colspan="4" attrs="{'invisible': [('state_fileds', 'not in', ('pickup', 'pay'))]}">
+
+                           <field name="receiver_name" readonly="1"/>
+                           <field name="receiver_adress"/>
+                           <field name="receiver_id"/>
+                           <field name="receiver_phone"/>
+                              <newline/>
+                           <field name="transfer_amount" readonly="1"/>
+                           <field name="receive_amount"/>
+
+ 
+                        </group>
+
+                         </div>
+
+                        </div>
+
+
+                     </div>
+
+                        	<!-- End info -->
+
+
+
+                            <field name="r_payment_date" invisible="1"/>
+                            <field name="r_company_id" invisible="1"/>
+                            <field name="r_partner_id" invisible="1"/>
+
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="money_transfers_tree_view_recived" model="ir.ui.view">
+            <field name="name">Money Receive Tree</field>
+            <field name="model">money_transfers.receive</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="All tree">
+                 <field name="partner_recipient"/>
+                 <field name="receive_amount"/>
+
+                 </tree>
+            </field>
+        </record>
+ 
+
+        <record id="transfers_action_recived" model="ir.actions.act_window">
+            <field name="name">Money Received</field>
+            <field name="res_model">money_transfers.receive</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+    <menuitem name="Received Transfers" id="money_transfers_menu_2" sequence="1" parent="money_transfers_menu_root"
+        groups="group_transfers_receiver" 
+        action="transfers_action_recived"/>
+
+
+
+
+            <report id="report_recive_copy" model="money_transfers.receive"
+                string="Money Copy Recive"
+                report_type="qweb-pdf"
+                name="money_transfers.reportcopyrecive"
+                file="money_transfers.reportcopyrecive"
+                 />
+
+
+            <report id="report_payment_recive" model="money_transfers.receive"
+                string="Money payment Recive"
+                report_type="qweb-pdf"
+                name="money_transfers.reportpaymentrecive"
+                file="money_transfers.reportpaymentrecive"
+                 />
+
+
+    </data>
+</odoo>

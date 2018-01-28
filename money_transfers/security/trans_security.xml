@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.module.category" id="base.module_category_money_transfers">
+            <field name="name">Money Transfers</field>
+            <field name="description">Helps you handle your money transfers.</field>
+            <field name="sequence">20</field>
+        </record>
+        <!-- Survey user -->
+        <record model="res.groups" id="group_transfers_user">
+            <field name="name">User</field>
+            <field name="category_id" ref="base.module_category_money_transfers"/>
+        </record>
+
+
+        <!-- Survey receiver -->
+        <record model="res.groups" id="group_transfers_receiver">
+            <field name="name">Receiver</field>
+            <field name="implied_ids" eval="[(4, ref('group_transfers_user'))]"/> 
+            <field name="category_id" ref="base.module_category_money_transfers"/>
+        </record>
+
+       <!-- Survey sender -->
+        <record model="res.groups" id="group_transfers_sender">
+            <field name="name">Sender</field>
+            <field name="implied_ids" eval="[(4, ref('group_transfers_receiver'))]"/> 
+            <field name="category_id" ref="base.module_category_money_transfers"/>
+        </record>
+
+        <!-- Survey Fund Manager -->
+        <record model="res.groups" id="group_transfers_fundmanager">
+            <field name="name">Fund Manager</field>
+            <field name="implied_ids" eval="[(4, ref('group_transfers_sender'))]"/> 
+            <field name="category_id" ref="base.module_category_money_transfers"/>
+        </record>
+
+
+        <!-- Survey Manger -->
+        <record model="res.groups" id="group_transfers_manger">
+            <field name="name">Manger</field>
+            <field name="implied_ids" eval="[(4, ref('group_transfers_fundmanager'))]"/>
+            <field name="category_id" ref="base.module_category_money_transfers"/>
+        </record>
+
+
+
+
+       
+
+  
+
+
+  <!-- Record manager -->
+        <record id="survey_manager_access" model="ir.rule">
+            <field name="name">Money Transfers Manager access rights</field>
+            <field name="model_id" ref="money_transfers.model_money_transfers"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_transfers_fundmanager'))]"/>
+            <field eval="1" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+  <!-- Record manager -->
+        <record id="survey_manager_access" model="ir.rule">
+            <field name="name">Money Transfers Manager access rights</field>
+            <field name="model_id" ref="money_transfers.model_money_transfers"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_transfers_manger'))]"/>
+            <field eval="1" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+        
+  <!-- Record receiver -->
+        <record id="survey_manager_access" model="ir.rule">
+            <field name="name">Money Transfers Manager access rights</field>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="model_id" ref="money_transfers.model_money_transfers"/>
+            <field name="groups" eval="[(4, ref('group_transfers_receiver'))]"/>
+            <field eval="1" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+
+  <!-- Record sender -->
+        <record id="survey_manager_access" model="ir.rule">
+            <field name="name">Money Transfers Manager access rights</field>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="model_id" ref="money_transfers.model_money_transfers"/>
+            <field name="groups" eval="[(4, ref('group_transfers_sender'))]"/>
+            <field eval="1" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+ <!-- Record user -->
+        <record id="survey_manager_access" model="ir.rule">
+            <field name="name">Money Transfers Manager access rights</field>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="model_id" ref="money_transfers.model_money_transfers"/>
+            <field name="groups" eval="[(4, ref('group_transfers_user'))]"/>
+            <field eval="1" name="perm_unlink"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+        </record>
+
+    </data>
+</odoo>
